@@ -7,7 +7,7 @@ WORKDIR /go/src/sso
 COPY . /go/src/sso
 
 RUN cd /go/src/sso; \
-   dep install -v
+   dep ensure -v
 
 RUN cd /go/src/sso; \
     go install -v
