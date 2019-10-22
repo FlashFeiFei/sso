@@ -35,3 +35,11 @@ DockerfileBase是Dockerfile的基础镜像，里面安装了gin框架和dep包�
 - DockerfileBase只下载那些需要翻墙的包
 - 任何不需要翻墙的包，使用dep下载
 
+
+## 部署
+
+直接执行,还没有写完
+```
+sudo docker-compose up -d
+```
+
