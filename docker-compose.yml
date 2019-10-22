@@ -2,18 +2,8 @@ version: '3.1'
 services:
   sso:
     container_name: sso
-    build: .
-    image: redis:5.0.6
+    image: 51785816/goindep:1.0
     ports:
-    - "7000:7000"
-    - "17000:17000"
-    volumes:
-    - ./conf:/usr/local/etc/redis
-    - ./data:/data
+    - "8083:8083"
     restart: always
-    command: redis-server /usr/local/etc/redis/redis.conf
-    networks:
-    - "redis-net"
-networks:
-  redis-net:
-    external: true
+    command: sso
