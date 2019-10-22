@@ -2,4 +2,4 @@
 
 docker build --tag lysso:1.0
 
-docker push dd
+docker push dddd
