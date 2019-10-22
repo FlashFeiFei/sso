@@ -4,10 +4,8 @@ import (
 	"github.com/guapo-organizations/sso/help"
 	"net/http"
 	"strings"
-	"sync"
 )
 
-var users sync.Map
 
 func RegisterHandler(w http.ResponseWriter, req *http.Request) {
 	//不是post方法
@@ -26,7 +24,7 @@ func RegisterHandler(w http.ResponseWriter, req *http.Request) {
 		help.Response400(w, http.StatusNotAcceptable, "用户已存在", nil)
 		return
 	}
-	
+
 	users.Store("username", password)
 
 	help.Response200(w, http.StatusCreated, "注册成功", nil)
