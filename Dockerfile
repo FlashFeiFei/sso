@@ -13,4 +13,4 @@ RUN cd /go/src/github.com/guapo-organizations/sso && dep ensure -vendor-only
 RUN cd /go/src/github.com/guapo-organizations/sso; \
     go install -v
 
-CMD ["/go/bin/sso"]
+CMD ["sso"]
