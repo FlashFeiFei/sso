@@ -7,7 +7,7 @@ WORKDIR /go/src/github.com/guapo-organizations/sso
 COPY . /go/src/github.com/guapo-organizations/sso
 
 #dep包安装
-RUN cd /go/src/github.com/guapo-organizations/sso && dep ensure
+RUN cd /go/src/github.com/guapo-organizations/sso && dep ensure -vendor-only
 
 #安装程序
 RUN cd /go/src/github.com/guapo-organizations/sso; \
