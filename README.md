@@ -14,8 +14,42 @@
 
 ## 文件说明
 
-- DockerfileBase
-- Dockerfile
+### Docker镜像说明
+
+文件夹
+```
+|-- Dockerfile目录
+ |-- DockerfileBase目录
+  |-- Dockerfile文件
+|-- Dockerfile文件
+```
+
+### 构建镜像
+
+构建基础镜像
+```
+#登录自己的dockerhub
+docker login
+#构建镜像
+docker build -t 51785816/goindep:1.0 .
+#推送到自己的dockerhub仓库
+docker push 51785816/goindep:1.0
+```
+
+构建sso单点登录的镜像
+```
+#登录自己的dockerhub
+docker login
+
+#构建镜像
+docker build -t 51785816/sso:1.0 .
+
+#推送到自己的dockerhub仓库
+docker push 51785816/sso:1.0
+```
+
+- DockerfileBase中的Dockerfile是基础镜像
+- Dockerfile中的Dockerfile是sso的镜像
 
 Dockerfile是构建sso单点登录应用的golang镜像
 
@@ -32,7 +66,7 @@ DockerfileBase是Dockerfile的基础镜像，里面安装了gin框架和一些�
 
 总结： 
 
-- DockerfileBase只下载那些需要翻墙的包
+- DockerfileBase下载了框架和一些工具库
 
 
 ## 部署
