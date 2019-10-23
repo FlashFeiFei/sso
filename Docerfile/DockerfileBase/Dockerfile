@@ -15,6 +15,9 @@ RUN go get -u -v github.com/spf13/viper
 #安装jwt
 RUN go get -v github.com/dgrijalva/jwt-go
 
+#安装redis驱动，支持集群的
+
+RUN go get -u -v github.com/go-redis/redis/v7
 
 #因为golang的某些包需要翻墙，烦死了，百度云的服务器无法下载，所以我在本地通过ss翻墙，把gin框架安装，打包到镜像里面
 #执行 docker build -t 51785816/goindep:1.0 .
