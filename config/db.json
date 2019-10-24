@@ -1,0 +1,20 @@
+{
+  "Read": [
+    {
+      "IP": "127.0.0.1",
+      "Port": 3306,
+      "User": "user",
+      "Password": "",
+      "DBName": ""
+    }
+  ],
+  "Write": [
+    {
+      "IP": "127.0.0.1",
+      "Port": 3306,
+      "User": "user",
+      "Password": "",
+      "DBName": ""
+    }
+  ]
+}

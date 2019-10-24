@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	_ "my-aplication/sso/lib/database"
 )
 
 func main() {

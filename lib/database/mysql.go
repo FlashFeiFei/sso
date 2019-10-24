@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"runtime"
 )
 
 //读写连接
@@ -14,6 +15,8 @@ var writeContent *gorm.DB
 
 //初始化连接数据库的信息
 func init() {
+	_, path, _, _ := runtime.Caller(0)
+	log.Println(path)
 	//读连接
 	if readContent == nil {
 		//只读连接
@@ -46,7 +49,9 @@ func init() {
 	}
 
 	//异步的去监听程序是否收到中断信号，从而释放连接资源
-	go safeOut()
+	if readContent != nil && writeContent != nil {
+		go safeOut()
+	}
 
 }
 
