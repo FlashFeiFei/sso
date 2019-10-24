@@ -1,14 +1,25 @@
 FROM golang:1.13.3-buster
 
 #创建和指定工作区间
-RUN mkdir /go/src/my-application
-RUN WORKDIR /go/src/my-application
+
+#定义工作区间目录
+ENV APP_DIR /go/src/my-application
+#创建目录
+RUN mkdir $APP_DIR
+#移动到目录
+RUN cd $APP_DIR
+#指定工作区间
+WORKDIR $APP_DIR
+
+#复制main到里面不然dep执行不了，fuck dep，是真的麻烦!
+COPY ./main.go .
 
 # 安装dep
 RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
-#安装gin框架、mysql、orm、配置文件解析、jwt
+#dep安装gin框架、mysql、orm、配置文件解析、jwt
 #dep ensure -add 分开执行的话，会把没有引用的包给删除掉，日!
+RUN dep init
 RUN dep ensure -add -v github.com/gin-gonic/gin \
      github.com/go-sql-driver/mysql \
      github.com/jinzhu/gorm \
