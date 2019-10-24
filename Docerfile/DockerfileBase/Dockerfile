@@ -6,21 +6,16 @@ RUN WORKDIR /go/src/my-application
 
 # 安装dep
 RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-#安装gin框架
-RUN dep ensure -add -v github.com/gin-gonic/gin
 
-#安装mysql数据库驱动
-RUN dep ensure -add -v github.com/go-sql-driver/mysql
+#安装gin框架、mysql、orm、配置文件解析、jwt
+#dep ensure -add 分开执行的话，会把没有引用的包给删除掉，日!
+RUN dep ensure -add -v github.com/gin-gonic/gin \
+     github.com/go-sql-driver/mysql \
+     github.com/jinzhu/gorm \
+     github.com/spf13/viper \
+      github.com/dgrijalva/jwt-go
 
-#安装orm
-RUN dep ensure -add -v github.com/jinzhu/gorm
-
-#安装配文文件解析库
-RUN dep ensure -add -v github.com/spf13/viper
-
-#安装jwt
-RUN dep ensure -add -v github.com/dgrijalva/jwt-go
-#安装redis驱动，支持集群的
+#安装redis驱动，支持集群的,暂时不转，官网报错了
 #RUN dep ensure -add -v github.com/go-redis/redis/v7
 
 
