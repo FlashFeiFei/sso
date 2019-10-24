@@ -1,0 +1,4 @@
+package DocerfileBase
+
+func main() {
+}
