@@ -16,25 +16,25 @@ func ParseConfig(db_config_path string) (dbInfo DBInfostruct) {
 	if db_config_path == "" {
 		//获取当前执行文件的绝对路径
 		_, path, _, _ := runtime.Caller(0)
-		application_path := filepath.Base(filepath.Base(path))
+		application_path := filepath.Dir(filepath.Dir(filepath.Dir(path)))
+		log.Println(application_path)
 		db_config_path := filepath.Join(application_path, "config", "db.json")
 		log.Println("db路径:", db_config_path)
 	}
 
 	file, err := os.Open(db_config_path)
 	if err != nil {
-		log.Fatalln("解析数据库文件失败")
+		log.Fatalln("解析数据库文件失败", err)
 	}
 	defer file.Close()
 	json_decode := json.NewDecoder(file)
-	json_decode.Decode(dbInfo)
-	
+	json_decode.Decode(&dbInfo)
 	return
 }
 
 type DBInfostruct struct {
-	ReadInfo []ContentInfo `json:"Read"`
-	Write    []ContentInfo `json:"Write"`
+	WriteInfo []ContentInfo `json:"Write"`
+	ReadInfo  []ContentInfo `json:"Read"`
 }
 
 //连接信息

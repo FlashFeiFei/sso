@@ -2,19 +2,19 @@
   "Read": [
     {
       "IP": "127.0.0.1",
-      "Port": 3306,
-      "User": "user",
-      "Password": "",
-      "DBName": ""
+      "Port": "3306",
+      "User": "root",
+      "Password": "phpc233j",
+      "DBName": "mysql"
     }
   ],
   "Write": [
     {
-      "IP": "127.0.0.1",
-      "Port": 3306,
-      "User": "user",
-      "Password": "",
-      "DBName": ""
+      "IP": "106.12.26.73",
+      "Port": "3306",
+      "User": "root",
+      "Password": "admin1232",
+      "DBName": "mysql"
     }
   ]
 }
