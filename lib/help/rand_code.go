@@ -1,4 +1,4 @@
-package code
+package help
 
 import (
 	"crypto/rand"
