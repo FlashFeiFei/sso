@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"my-aplication/sso/controller/register"
-	//_ "my-aplication/sso/lib/database"
 	"net/http"
 )
 
@@ -17,7 +16,7 @@ func main() {
 		register_group.POST("/phone", regster.RegisterUserByPhone)
 		//邮箱注册
 		register_group.POST("/email", regster.RegisterUserByEmaill)
-		
+
 	}
 
 	//验证码模块
