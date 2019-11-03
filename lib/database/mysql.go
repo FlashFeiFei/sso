@@ -1,6 +1,7 @@
 package database
 
 import (
+	"flag"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"log"
@@ -9,14 +10,19 @@ import (
 	"os/signal"
 )
 
+var dbConfigPath string
 //读写连接
 var readContent []*gorm.DB
 var writeContent []*gorm.DB
 
 //初始化连接数据库的信息
 func init() {
+	flag.StringVar(&dbConfigPath, "dbConfigPath", "", "数据库连接配置文件")
+	if !flag.Parsed() {
+		flag.Parse()
+	}
 	//解析mysql配置文件
-	db_info := ParseConfig("")
+	db_info := ParseConfig(dbConfigPath)
 
 	if len(db_info.WriteInfo) <= 0 {
 		log.Fatalln("不能没有写连接的mysql")
