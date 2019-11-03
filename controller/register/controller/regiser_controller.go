@@ -1,14 +1,15 @@
-package regster
+package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"my-aplication/sso/controller/register"
 	"my-aplication/sso/lib/help"
 	"net/http"
 )
 
 //通过手机号注册
 func RegisterUserByPhone(c *gin.Context) {
-	var userInfo UserRegisterInfoByPhone
+	var userInfo regster.UserRegisterInfoByPhone
 	if c.Bind(&userInfo) != nil {
 		//我没有用gin自带的返回响应，我自己封装了原生的响应
 		help.Response400(c, http.StatusBadRequest, "解析注册数据失败", nil)
@@ -29,7 +30,7 @@ func RegisterUserByPhone(c *gin.Context) {
 
 //通过email注册
 func RegisterUserByEmaill(c *gin.Context) {
-	var userInfo UserRegisterInfoByEmail
+	var userInfo regster.UserRegisterInfoByEmail
 	if c.Bind(&userInfo) != nil {
 		//我没有用gin自带的返回响应，我自己封装了原生的响应
 		help.Response400(c, http.StatusBadRequest, "解析注册数据失败", nil)
@@ -42,7 +43,7 @@ func RegisterUserByEmaill(c *gin.Context) {
 	}
 
 	//数据入库
-	
+
 	//反应响应
 	help.Response200(c, http.StatusCreated, "注册用户成功", nil)
 	return

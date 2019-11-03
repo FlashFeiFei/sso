@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"my-aplication/sso/controller/register"
+	rc "my-aplication/sso/controller/register/controller"
 	"net/http"
 )
 
@@ -13,9 +13,9 @@ func main() {
 	register_group := r.Group("/register/user")
 	{
 		//手机号注册
-		register_group.POST("/phone", regster.RegisterUserByPhone)
+		register_group.POST("/phone", rc.RegisterUserByPhone)
 		//邮箱注册
-		register_group.POST("/email", regster.RegisterUserByEmaill)
+		register_group.POST("/email", rc.RegisterUserByEmaill)
 
 	}
 
